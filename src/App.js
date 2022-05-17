@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import { Button } from 'antd';
+import TableRenderer from './components/Table';
+import PieChart from './components/PieChart';
 
 function App() {
+  const [showPieChart, setShowPieChart] = useState(false);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+        <Button onClick={() => setShowPieChart(false)}>Show Details Table</Button>
+        <Button onClick={() => setShowPieChart(true)} >View by Frauds type</Button>
+      </div>
+      {
+        showPieChart ? (
+          <PieChart />
+        ) : <TableRenderer />
+      }
     </div>
   );
 }
