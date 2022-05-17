@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Button } from 'antd';
 import TableRenderer from './components/Table';
 import PieChart from './components/PieChart';
+import ChartRenderer from './components/BarChart';
 
 function App() {
   const [showPieChart, setShowPieChart] = useState(false);
@@ -14,7 +15,10 @@ function App() {
       </div>
       {
         showPieChart ? (
-          <PieChart />
+          <>
+            <PieChart />
+            <ChartRenderer />
+          </>
         ) : <TableRenderer />
       }
     </div>
