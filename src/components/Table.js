@@ -4,7 +4,7 @@ import { Spin, Table } from "antd";
 
 // Initiate Cube.js API
 const cubejsApi = cubejs(
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NTI4MDMyNzV9.XMTKYW8oJz3HBDeLMblsEZIt0kBgutYKKk_BcLPDg5g',
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTMyODIzNDQsImV4cCI6MTY1NTg3NDM0NH0.6__5oRpMmh8dEbBmhN-tkFOVc-B8CNU8IkxX7E_z5XI',
   { apiUrl: 'https://inherent-lynx.aws-us-east-1.cubecloudapp.dev/cubejs-api/v1' }
 );
 
@@ -32,20 +32,19 @@ const TableRenderer = () => {
     cubejsApi
       .load({
         "measures": [
-          "Fraud.amount"
+          "Fraud.amount",
+          "Fraud.count"
         ],
         "timeDimensions": [],
         "order": {
-          "Fraud.amount": "desc"
+          "Fraud.nameorig2": "desc"
         },
-        "filters": [],
         "dimensions": [
           "Fraud.type",
-          "Fraud.newbalancedest",
           "Fraud.isfraud",
           "Fraud.isflaggedfraud"
         ],
-        "limit": 50000
+        "limit": 10000
       })
       .then((resultSet) => {
         setColumns(resultSet.tableColumns(pivotConfig));
